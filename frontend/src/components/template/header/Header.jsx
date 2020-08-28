@@ -3,7 +3,7 @@ import './Header.css'
 import 'font-awesome/css/font-awesome.css'
 import '../userDropdown/UserDropdown.jsx'
 
-import { connect, Provider } from 'react-redux'
+import { connect} from 'react-redux'
 import { changeMenuVisibility } from './../../../config/actions/menu.js'
 import UserDropdown from '../userDropdown/UserDropdown.jsx'
 
@@ -14,7 +14,7 @@ export function Header(props) {
 
     return (
         <header className="header">
-            <a className="toggle" onClick={e => props.toggleMenuVisibility(props.isMenuVisible)}>
+            <a href='/' className="toggle"  onClick={e => props.toggleMenuVisibility(props.isMenuVisible)}>
                 <i className={`fa ${setIcon(isMenuVisible)}`}></i>
             </a>
             <h1 className="title">
@@ -24,10 +24,6 @@ export function Header(props) {
         </header>
     )
 }
-
-// function setUserDropdown(hideUserDropdown) {
-//     return hideUserDropdown? <UserDropdown /> :  null
-// }
 
 function setIcon(isMenuVisible) {
     return isMenuVisible ? 'fa-angle-left' : 'fa-angle-down'

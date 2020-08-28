@@ -54,4 +54,6 @@
 
 .user-dropdown-content a:hover {
     background-color: #EDEDED;
+    text-decoration: none;
+    color: black;
 }
