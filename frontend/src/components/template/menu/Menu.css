@@ -6,9 +6,16 @@
     flex-direction: column;
     flex-wrap: wrap;
     transition: width .5s ease-in-out;
+    
 }
 
 .hide{
     width: 0px;
-    
 }
+
+.menu a,
+.menu a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+

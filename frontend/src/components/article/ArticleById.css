@@ -1,0 +1,19 @@
+.article-content{
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.article-content pre{
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.2em;
+}
+
+.article-content img{
+    max-width: 100%;
+}
+
+.article-content :last-child{
+    margin-bottom: 0px;
+}

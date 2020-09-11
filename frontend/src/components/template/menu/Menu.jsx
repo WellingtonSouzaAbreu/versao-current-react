@@ -2,25 +2,32 @@ import React from 'react'
 import './Menu.css'
 import { connect } from 'react-redux'
 
+import { baseApiUrl } from './../../../global.js'
+import axios from 'axios'
+
 export function Menu(props) {
-    const {isMenuVisible} = props
-
-
+    const { menuVisible } = props
+    let treeData = getTreeData()
 
     return (
-        <aside className={`menu ${setVisibility(isMenuVisible)}`}>
-
+        <aside className={`menu ${setVisibility(menuVisible)}`}>
+           
         </aside>
     )
 }
 
-function setVisibility(isMenuVisible){
-    if(!isMenuVisible) return 'hide-menu'
+function getTreeData() {
+    const url = `${baseApiUrl}/categories/tree`
+    return axios.get(url).then(res => res.data) // Retornando uma promisse
+}
+
+function setVisibility(menuVisible) {
+    if (!menuVisible) return 'hide'
 }
 
 function mapStateToProps(state) {
     return {
-        isMenuVisible: state.menu.isMenuVisible
+        menuVisible: state.menu.menuVisible
     };
 }
 

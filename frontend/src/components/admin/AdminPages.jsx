@@ -13,10 +13,10 @@ export default function AdminPages(props) {
             <div className="admin-pages-tabs">
                 <Tabs defaultActiveKey="profile">
                     <Tab eventKey="artigos" title="Artigos">
-                        <CategoryAdmin/>
+                        <ArticleAdmin/>
                     </Tab>
                     <Tab eventKey="categorias" title="Categorias">
-                        <ArticleAdmin/>
+                        <CategoryAdmin/>
                     </Tab>
                     <Tab eventKey="usuarios" title="Usuários">
                         <UserAdmin/>

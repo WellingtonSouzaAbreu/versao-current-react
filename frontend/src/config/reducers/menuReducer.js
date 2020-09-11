@@ -1,11 +1,8 @@
 import {CHANGE_MENU_VISIBILITY} from '../actions/actionTypes.js'
 
 const initialState= {
-    isMenuVisible: true,
-    user:{
-        name: 'Usuário mock',
-        email: 'Usuario @gmail.com'
-    }
+    menuVisible: false,
+    user: null
 }
 
 export default function(state = initialState, action){
@@ -13,7 +10,7 @@ export default function(state = initialState, action){
         case CHANGE_MENU_VISIBILITY:
             return{
                 ...state,
-                isMenuVisible: action.payload
+                menuVisible: action.payload
             }
         default: 
             return state

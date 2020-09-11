@@ -4,7 +4,7 @@ module.exports = {
   client: 'postgresql',
   connection: db,
   pool: { // Numero de conexões
-    min: 2,
+    min: 0,
     max: 10
   },
   migrations: {

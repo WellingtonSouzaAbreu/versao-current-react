@@ -11,11 +11,11 @@ import { BrowserRouter } from 'react-router-dom'
 
 
 function App(props) {
-  const { isMenuVisible } = props
+  const { menuVisible } = props
 
   return (
     <BrowserRouter>
-      <div className={`App ${setLayout(isMenuVisible)}`}>
+      <div className={`App ${setLayout(menuVisible)}`}>
         <Header title="Cod3r - Base de Conhecimento" />
         <Menu />
         <Content />
@@ -25,13 +25,13 @@ function App(props) {
   )
 }
 
-function setLayout(isMenuVisible) {
-  if (!isMenuVisible) return 'hide-menu'
+function setLayout(menuVisible) {
+  if (!menuVisible) return 'hide-menu'
 }
 
 function mapStateToProps(state) {
   return {
-    isMenuVisible: state.menu.isMenuVisible
+    menuVisible: state.menu.menuVisible
   }
 }
 

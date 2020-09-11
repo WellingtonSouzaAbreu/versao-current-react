@@ -3,16 +3,20 @@ import { connect } from 'react-redux'
 import Gravatar from 'react-gravatar'
 import './UserDropdown.css'
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export function userDropdown(props) {
-    const {user} = props
+    let { user } = props
+    
+    let userName = user ? user : 'Usuário'
+    let userEmail = user ? user : 'usuario@gmail.com'
+
     return (
-        <div className="user-dropdown">
+        <div className="user-dropdown" hidden={userName == 'Usuário'}>
             <div className="user-button">
-                <span className="d-none d-sm-block">{user.name}</span>
+                <span className="d-none d-sm-block">{userName}</span>
                 <div className="user-dropdown-img">
-                    <Gravatar email={user.email} />
+                    <Gravatar email={userEmail} />
                 </div>
                 <i className="fa fa-angle-down"></i>
             </div>

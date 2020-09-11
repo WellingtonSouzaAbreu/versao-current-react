@@ -1,6 +1,7 @@
 const app = require('express')()
 const consign = require('consign') // Consign auxilia com as dependências
 const db = require('./config/db.js') // Importando db configurado pelo knex
+
 const mongoose = require('mongoose')
 require('./config/mongoDb') // Essa simples chamara já chama o arquivo de conexão e o inicia
 

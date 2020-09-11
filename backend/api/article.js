@@ -16,6 +16,7 @@ module.exports = app => {
             existsOrError(article.userId, 'Autor não informado')
             existsOrError(article.content, 'Conteúdo não informado')
         } catch (msg) {
+            console.log(msg)
             res.status(400).send(msg)
         }
 
@@ -50,7 +51,7 @@ module.exports = app => {
         }
     }
 
-    const limit = 10 // Usado para paginação
+    const limit = 3 // Usado para paginação
     const get = async (req, res) => {
         const page = req.query.page || 1
         // Atribui um obj a result

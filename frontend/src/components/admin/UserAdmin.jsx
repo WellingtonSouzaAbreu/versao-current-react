@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { baseApiUrl } from './../../global.js'
 import axios from 'axios'
@@ -24,9 +23,7 @@ export default class UserAdmin extends Component {
 
     loadUsers() {
         const url = `${baseApiUrl}/users`
-        axios.get(url).then(res => {
-            this.setState({ users: res.data })
-        })
+        axios.get(url).then(res => this.setState({ users: res.data }))
     }
 
     updateField(event) {
@@ -35,21 +32,20 @@ export default class UserAdmin extends Component {
         this.setState({ user })
     }
 
-    save() {
+    save(e) {
+        e.preventDefault()
         const method = this.state.user.id ? 'put' : 'post'
         const id = this.state.user.id ? `/${this.state.user.id}` : ''
         window.alert(`${baseApiUrl}/users${id}`)
         axios[method](`${baseApiUrl}/users${id}`, this.state.user)
-            .then(() => {
-                this.reset()
-            })
+            .then(() => this.reset())
             .catch((err) => window.alert('Erro ao salvar!'))
     }
 
     reset() {
         this.loadUsers()
         this.setState({
-            user: {id: '', name: '', email:'', admin:false, password:'', confirmPassword:''},
+            user: { id: '', name: '', email: '', admin: false, password: '', confirmPassword: '' },
             mode: 'save'
         })
     }
@@ -117,7 +113,7 @@ export default class UserAdmin extends Component {
                     <div className="form-row">
                         <div className="col-md-6 col-sm-12">
                             <label for="user-name">Nome</label>
-                            <input type="text" className="form-control" id="user-name" readOnly={this.state.mode == 'remove'}
+                            <input type="text" className="form-control" id="user-name" readOnly={this.state.mode === 'remove'}
                                 name="name" value={this.state.user.name} placeholder="Informe o Nome do Usuário..." required onChange={e => this.updateField(e)} />
                         </div>
                         <div className="form-group col-md-6 col-sm-12">
@@ -126,9 +122,9 @@ export default class UserAdmin extends Component {
                                 name="email" value={this.state.user.email} placeholder="Informe o Email do Usuário..." required onChange={e => this.updateField(e)} />
                         </div>
                     </div>
-                    <div class="form-check mt-3 mb-3">
+                    <div class="form-check mt-3 mb-3" hidden={this.state.mode == 'remove'}>
                         <input class="form-check-input" type="checkbox" id="user-admin" readOnly={this.state.mode == 'remove'}
-                            name="admin"  onChange={e => this.updateField(e)} />
+                            name="admin" onChange={e => this.updateField(e)} />
                         <label class="form-check-label" for="user-admin">
                             Administrador?
                         </label>
@@ -147,7 +143,7 @@ export default class UserAdmin extends Component {
                     </div>
                     <div className="form-row">
                         <div className="col">
-                            <button className="btn btn-primary" hidden={this.state.mode == 'remove'} onClick={e => this.save()}>Salvar</button>
+                            <button className="btn btn-primary" hidden={this.state.mode == 'remove'} onClick={e => this.save(e)}>Salvar</button>
                             <button className="btn btn-danger" hidden={this.state.mode == 'save'} onClick={e => this.remove()}>Excluir</button>
                             <button className="btn btn-secondary ml-2" onClick={e => this.reset()}>Cancelar</button>
                         </div>
